@@ -38,22 +38,33 @@ public class Main {
     }
 
     public static void displayAssetInfo(Asset asset) {
-        System.out.printf("%-60s %-14s %-10s\n", "Description", "Date Acquired", "Current Value");
-        System.out.println("+------------------------------------------------------------+--------------+----------+");
-        System.out.printf("|%-60s|%-14s|%-10s|\n", asset.getDescription(), asset.getDateAcquired(), asset.getValue());
-        System.out.println("+------------------------------------------------------------+--------------+----------+");
+        // prints header
+        System.out.println("+----------------------------------------------------------------------+--------------------+----------------------+");
+        System.out.printf("|%-70s|%-20s|%-22s|\n", "Description", "Date Acquired", "Current Value");
+        System.out.println("+----------------------------------------------------------------------+--------------------+----------------------+");
+        // prints asset details
+        System.out.printf("|%-70s|%-20s|$%-21.2f|\n", asset.getDescription(), asset.getDateAcquired(), asset.getValue());
+        System.out.println("+----------------------------------------------------------------------+--------------------+----------------------+");
+
         if (asset instanceof House) {
             House h = (House) asset;
-            System.out.printf("%-40s %-15s %-10s %-10s\n", "Address", "Condition", "Square Footage", "Lot Size");
-            System.out.println("+----------------------------------------+--------------+----------+----------+");
-
+            // prints House-specific details header
+            System.out.printf("|%-50s|%-20s|%-20s|%-22s|\n", "Address", "Condition (1 - 4)", "Square Footage", "Lot Size (sq ft)");
+            System.out.println("+--------------------------------------------------+-------------------+---------------------+--------------------+");
+            // prints House details
+            System.out.printf("|%-50s|%-20d|%-20d|%-22d|\n", h.getAddress(), h.getCondition(), h.getSquareFoot(), h.getLotSize());
         } else {
             Vehicle v = (Vehicle) asset;
-            System.out.printf("%-30s %-15s %-10s\n", "Make & Model", "Year", "Mileage");
-
+            // prints Vehicle-specific details header
+            System.out.printf("|%-70s|%-20s|%-22s|\n", "Make & Model", "Year", "Mileage");
+            System.out.println("+--------------------------------+-----------------+-----------------+");
+            // prints Vehicle details
+            System.out.printf("|%-70s|%-20d|%-22d|\n", v.getMakeModel(), v.getYear(), v.getOdometer());
         }
 
-
+        // End of asset info separator
+        System.out.println("+-----------------------------------------------------------+--------------------+------------------------+");
+        System.out.println("====================================================================================================================");
     }
 
 
