@@ -5,8 +5,8 @@ import java.time.LocalDate;
 // abstract Asset class, meaning only child classes can be instantiated
 public abstract class Asset {
 
-    private String description;
-    private LocalDate dateAcquired;
+    protected String description;
+    protected LocalDate dateAcquired;
     protected double originalCost;
 
     public Asset(String description, LocalDate dateAcquired, double originalCost) {
