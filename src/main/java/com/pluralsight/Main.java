@@ -7,8 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ArrayList<Asset> myAssets;
-        myAssets = new ArrayList<>() {{
+        ArrayList<Asset> myAssets = new ArrayList<>() {{
             add(new Vehicle("well-maintained Toyota Corolla", LocalDate.of(2019, 11, 12), 15000.00,
                     "Toyota Corolla 2014", 2014, 105000));
             add(new House("older farmhouse with acreage", LocalDate.of(2019, 11, 30), 150000.00,
@@ -32,6 +31,7 @@ public class Main {
         }};
 
         System.out.println("Here are all your assets listed: ");
+        System.out.println("====================================================================================================================");
         for (Asset asset : myAssets) {
             displayAssetInfo(asset);
         }
@@ -49,23 +49,21 @@ public class Main {
         if (asset instanceof House) {
             House h = (House) asset;
             // prints House-specific details header
-            System.out.printf("|%-50s|%-20s|%-20s|%-22s|\n", "Address", "Condition (1 - 4)", "Square Footage", "Lot Size (sq ft)");
-            System.out.println("+--------------------------------------------------+-------------------+---------------------+--------------------+");
+            System.out.printf("|%-49s|%-20s|%-20s|%-22s|\n", "Address", "Condition (1 - 4)", "Square Footage", "Lot Size (sq ft)");
+            System.out.println("+-------------------------------------------------+--------------------+--------------------+----------------------+");
             // prints House details
-            System.out.printf("|%-50s|%-20d|%-20d|%-22d|\n", h.getAddress(), h.getCondition(), h.getSquareFoot(), h.getLotSize());
+            System.out.printf("|%-49s|%-20d|%-20d|%-22d|\n", h.getAddress(), h.getCondition(), h.getSquareFoot(), h.getLotSize());
         } else {
             Vehicle v = (Vehicle) asset;
             // prints Vehicle-specific details header
             System.out.printf("|%-70s|%-20s|%-22s|\n", "Make & Model", "Year", "Mileage");
-            System.out.println("+--------------------------------+-----------------+-----------------+");
+            System.out.println("+----------------------------------------------------------------------+--------------------+----------------------+");
             // prints Vehicle details
             System.out.printf("|%-70s|%-20d|%-22d|\n", v.getMakeModel(), v.getYear(), v.getOdometer());
+            System.out.println("+----------------------------------------------------------------------+--------------------+----------------------+");
         }
-
-        // End of asset info separator
-        System.out.println("+-----------------------------------------------------------+--------------------+------------------------+");
+        // prints asset separator
         System.out.println("====================================================================================================================");
     }
-
 
 }
