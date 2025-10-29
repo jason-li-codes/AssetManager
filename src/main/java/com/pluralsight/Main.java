@@ -38,20 +38,23 @@ public class Main {
     }
 
     public static void displayAssetInfo(Asset asset) {
-        System.out.printf("%-40s %-14s %-10s%n", "Description", "Date Acquired", "Original Cost");
+        System.out.printf("%-60s %-14s %-10s\n", "Description", "Date Acquired", "Current Value");
+        System.out.println("+------------------------------------------------------------+--------------+----------+");
+        System.out.printf("|%-60s|%-14s|%-10s|\n", asset.getDescription(), asset.getDateAcquired(), asset.getValue());
+        System.out.println("+------------------------------------------------------------+--------------+----------+");
         if (asset instanceof House) {
             House h = (House) asset;
-
+            System.out.printf("%-40s %-15s %-10s %-10s\n", "Address", "Condition", "Square Footage", "Lot Size");
+            System.out.println("+----------------------------------------+--------------+----------+----------+");
 
         } else {
             Vehicle v = (Vehicle) asset;
+            System.out.printf("%-30s %-15s %-10s\n", "Make & Model", "Year", "Mileage");
+
         }
 
 
-
     }
-
-
 
 
 }
