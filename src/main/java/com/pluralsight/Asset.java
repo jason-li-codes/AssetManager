@@ -2,7 +2,7 @@ package com.pluralsight;
 
 import java.time.LocalDate;
 
-public class Asset {
+public abstract class Asset {
 
     private String description;
     private LocalDate dateAcquired;
@@ -30,9 +30,7 @@ public class Asset {
         this.dateAcquired = dateAcquired;
     }
 
-    public double getValue() {
-        return originalCost;
-    }
+    public abstract double getValue();
 
     public void setOriginalCost(double originalCost) {
         this.originalCost = originalCost;
