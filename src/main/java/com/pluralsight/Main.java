@@ -7,6 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
 
+        // ArrayList of superclass Asset, which can hold both child classes, House and Vehicle
         ArrayList<Asset> myAssets = new ArrayList<>() {{
             add(new Vehicle("well-maintained Toyota Corolla", LocalDate.of(2019, 11, 12), 15000.00,
                     "Toyota Corolla 2014", 2014, 105000));
@@ -30,6 +31,7 @@ public class Main {
                     "BMW X5 2021", 2021, 15000));
         }};
 
+        // prints all assets with forEach loop and calls displayAssetInfo
         System.out.println("Here are all your assets listed: ");
         System.out.println("====================================================================================================================");
         for (Asset asset : myAssets) {
@@ -45,8 +47,9 @@ public class Main {
         // prints asset details
         System.out.printf("|%-70s|%-20s|$%-21.2f|\n", asset.getDescription(), asset.getDateAcquired(), asset.getValue());
         System.out.println("+----------------------------------------------------------------------+--------------------+----------------------+");
-
+        // checks if asset is an instance of the House child class
         if (asset instanceof House) {
+            // if yes, downcasts the asset as a House and prints House-specific details
             House h = (House) asset;
             // prints House-specific details header
             System.out.printf("|%-49s|%-20s|%-20s|%-22s|\n", "Address", "Condition (1 - 4)", "Square Footage", "Lot Size (sq ft)");
@@ -54,6 +57,7 @@ public class Main {
             // prints House details
             System.out.printf("|%-49s|%-20d|%-20d|%-22d|\n", h.getAddress(), h.getCondition(), h.getSquareFoot(), h.getLotSize());
         } else {
+            // otherwise, downcasts the asset as a Vehicle
             Vehicle v = (Vehicle) asset;
             // prints Vehicle-specific details header
             System.out.printf("|%-70s|%-20s|%-22s|\n", "Make & Model", "Year", "Mileage");

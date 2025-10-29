@@ -2,6 +2,7 @@ package com.pluralsight;
 
 import java.time.LocalDate;
 
+// abstract Asset class, meaning only child classes can be instantiated
 public abstract class Asset {
 
     private String description;
@@ -14,6 +15,7 @@ public abstract class Asset {
         this.originalCost = originalCost;
     }
 
+    // getters and setters, which can be used by child classes
     public String getDescription() {
         return description;
     }
@@ -30,10 +32,11 @@ public abstract class Asset {
         this.dateAcquired = dateAcquired;
     }
 
-    public abstract double getValue();
-
     public void setOriginalCost(double originalCost) {
         this.originalCost = originalCost;
     }
+
+    // abstract method means child class must have Override for this method
+    public abstract double getValue();
 
 }

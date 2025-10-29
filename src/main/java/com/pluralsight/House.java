@@ -9,6 +9,7 @@ public class House extends Asset {
     private int squareFoot;
     private int lotSize;
 
+    // House constructor uses Asset constructor and adds attributes
     public House(String description, LocalDate dateAcquired, double originalCost,
                  String address, int condition, int squareFoot, int lotSize) {
         super(description, dateAcquired, originalCost);
@@ -18,6 +19,7 @@ public class House extends Asset {
         this.lotSize = lotSize;
     }
 
+    // getters and setters
     public String getAddress() {
         return address;
     }
@@ -50,15 +52,15 @@ public class House extends Asset {
         this.lotSize = lotSize;
     }
 
-    @Override
+    @Override // Override method for getValue
     public double getValue() {
-
+        // returns value based on condition of House and lotSize
         return switch (condition) {
             case 1 -> 180 * squareFoot + 0.25 * lotSize;
             case 2 -> 130 * squareFoot + 0.25 * lotSize;
             case 3 -> 90 * squareFoot + 0.25 * lotSize;
             case 4 -> 80 * squareFoot + 0.25 * lotSize;
-            default -> this.originalCost;
+            default -> throw new IllegalStateException("Unexpected value: " + condition);
         };
     }
 
